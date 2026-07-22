@@ -1,6 +1,6 @@
 import { KeyRound, Trash2 } from 'lucide-react';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
     Dialog,
     DialogClose,
@@ -11,6 +11,7 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import type { Passkey } from '@/types/auth';
+import { cn } from '@/lib/utils';
 
 type Props = {
     passkey: Passkey;
@@ -57,15 +58,18 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
             </div>
 
             <Dialog>
-                <DialogTrigger asChild>
-                    <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-destructive hover:bg-destructive/10 hover:text-destructive"
-                    >
-                        <Trash2 className="h-4 w-4" />
-                        <span className="sr-only">Remove</span>
-                    </Button>
+                <DialogTrigger
+                    className={cn(
+                        buttonVariants({
+                            variant: 'ghost',
+                            size: 'sm',
+                            className:
+                                'text-destructive hover:bg-destructive/10 hover:text-destructive',
+                        }),
+                    )}
+                >
+                    <Trash2 className="h-4 w-4" />
+                    <span className="sr-only">Remove</span>
                 </DialogTrigger>
                 <DialogContent>
                     <DialogTitle>Remove passkey</DialogTitle>
@@ -75,8 +79,12 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
                         in.
                     </DialogDescription>
                     <DialogFooter className="gap-2">
-                        <DialogClose asChild>
-                            <Button variant="secondary">Cancel</Button>
+                        <DialogClose
+                            className={cn(
+                                buttonVariants({ variant: 'secondary' }),
+                            )}
+                        >
+                            Cancel
                         </DialogClose>
                         <Button
                             variant="destructive"
