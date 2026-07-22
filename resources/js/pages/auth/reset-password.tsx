@@ -48,7 +48,7 @@ export default function ResetPassword({ token, email, passwordRules }: Props) {
                                 id="password"
                                 name="password"
                                 autoComplete="new-password"
-                                className="mt-1 block w-full"
+                                className="mt-1"
                                 autoFocus
                                 placeholder="Password"
                                 passwordrules={passwordRules}
@@ -64,7 +64,7 @@ export default function ResetPassword({ token, email, passwordRules }: Props) {
                                 id="password_confirmation"
                                 name="password_confirmation"
                                 autoComplete="new-password"
-                                className="mt-1 block w-full"
+                                className="mt-1"
                                 placeholder="Confirm password"
                                 passwordrules={passwordRules}
                             />
